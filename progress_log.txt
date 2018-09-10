@@ -1,0 +1,43 @@
+
+Author: David Gutsch
+Date:   9/9/2018
+
+16 bit instructions decoded:
+
+-	adds
+-	add (BUG)
+- 	subs
+- 	adds imm3
+- 	subs imm3
+- 	adds imm8
+- 	subs imm8
+- 	cmps imm8
+- 	movs imm8
+- 	mov rd rm
+- 	movs rd rm
+- 	str register
+- 	strh register
+- 	strb register
+- 	ldrsb register
+- 	ldr register
+- 	ldrh register
+- 	ldrb register
+- 	ldrsh register
+- 	bx
+- 	blx
+
+
+32 bit instructions decoded:
+
+
+
+bugs:
+
+(add) - when rdn and rm are less than r8 the add instruction get's 
+	32-bit encoded. for example:
+	add r0, r3  <-- gets 32-bit encoded
+	add r5, r7  <-- gets 32-bit encoded
+	add r0, r1  <-- gets 32-bit encoded
+	add r0, r12 <-- gets 16-bit encoded (correctly)
+	add r3, r15 <-- gets 16-bit encoded (correctly)
+	

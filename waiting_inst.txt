@@ -1,0 +1,3 @@
+movs r0, r1
+   movs r5, r7
+   movs r7, r10
