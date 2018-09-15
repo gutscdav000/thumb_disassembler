@@ -1,5 +1,5 @@
 # thumb_disassembler
-a disassembler written for the arm thumb instruction set
+a disassembler written for the arm thumb2 instruction set
 
 good CCR diagram:
 ece.eng.umanitoba.ca/undergraduate/ECE3610/LectureNotes/Lecture%206%20CCR.pdf
