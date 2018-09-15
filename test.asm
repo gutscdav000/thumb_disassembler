@@ -78,3 +78,9 @@
    blx r7
    blx r10
    blx r14
+   str r1, [r3, 31]
+   str r0, [r2, 16]
+   str r5, [r7, 15]
+   str r6, [sp, #255]
+   str r4, [sp, #128]
+   str r7, [sp, #80]

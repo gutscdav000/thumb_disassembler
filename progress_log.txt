@@ -40,4 +40,10 @@ bugs:
 	add r0, r1  <-- gets 32-bit encoded
 	add r0, r12 <-- gets 16-bit encoded (correctly)
 	add r3, r15 <-- gets 16-bit encoded (correctly)
-	
+
+(str rt [rn, imm8]) - some instructions being 32-bit encoded. and 
+                     16-bit encoded istructions are being dumped to the hex file
+      		     with incorrect imm8 bit values.
+
+(str rt [rn, #imm5]) - some instructions are being 32-bit encoded. and 16-bit encoded instructions 
+		       do not have the correct imm5 values.
