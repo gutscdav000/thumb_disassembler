@@ -110,20 +110,24 @@ void instruction_decoder(int encoded) {
   }
   /* untested cases */
   // str rt, [rn, #imm5] T1
-  else if((encoded >> 11) == 0b01100) {
+  // ldr rt, [rn, #imm5] 
+  else if((encoded >> 12) == 0b0110) {
     printf("untested 1\n");
+    int opcode = ((encoded >> 11) & 0b00001) == 1? 4: 0;
     int rt = encoded & 0b0000000000000111;
     int rn = (encoded >> 3) & 0b0000000000111;
     int imm5 = (encoded >> 6) & 0b0000011111;
-    printf("   str %s, [%s, %d]\n", registers[rt], registers[rn], imm5);
+    printf("   %s %s, [%s, %d]\n", load_store[opcode], registers[rt], registers[rn], imm5);
   }
   // str str rt, [sp, #imm8] T2
-  else if((encoded >> 11) == 0b10010) {
+  // ldr rt, [sp, #imm8] 
+  else if((encoded >> 12) == 0b1001) {
     printf("untested 2\n");
+    int opcode = ((encoded >> 11) & 0b00001) == 1? 4: 0;
     int rt = (encoded >> 8) & 0b00000111;
     //int imm8 = encoded & 0x00ff;
     int imm8 = encoded & 0b0000000011111111;
-    printf("   str %s, [SP, %d]\n", registers[rt], imm8);
+    printf("   %s %s, [SP, %d]\n", load_store[opcode], registers[rt], imm8);
   }
   else {
     printf("   .hword 0x%x\n", encoded);

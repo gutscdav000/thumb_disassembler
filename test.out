@@ -14,7 +14,7 @@
    lsrs r0, r4
    asrs r0, r5
    movs r0, 255
-   movs r3, 128	
+   movs r3, 128
    cmps r1, 64
    eors r5, r6
    lsls r2, r4
@@ -31,18 +31,21 @@
    muls r2, r5
    bics r0, r1
    mvns r3, r6
-   adds r1, #128
-   subs r3, #128
+   adds r1, 128
+   subs r3, 128
    cmp r1, r3
    cmp r5, r7
-   mov r0, r1	
+   mov r0, r1
    mov r4, r7
    mov r7, r9
-   add r0, r3
-   add r5, r7
+   .hword 0xeb00
+   movs r3, r0
+   .hword 0xeb05
+   .hword 0x507
    add r0, r12
    add r3, r15
-   add r0, r1	
+   .hword 0xeb00
+   movs r1, r0
    str r1, [r3, r4]
    str r0, [r2, r5]
    str r7, [r5, r6]
@@ -78,9 +81,16 @@
    blx r7
    blx r10
    blx r14
-   str r1, [r3, #31]
-   str r0, [r2, #16]
-   str r5, [r7, #15]
-   str r6, [sp, #255]
-   str r4, [sp, #128]
-   str r7, [sp, #80]
+   .hword 0xf8c3
+   .hword 0x101f
+untested 1
+   str r0, [r2, 4]
+   .hword 0xf8c7
+   str r7, [r1, r0]
+   .hword 0xf8cd
+untested 1
+   str r7, [r7, 3]
+untested 2
+   str r4, [SP, 32]
+untested 2
+   str r7, [SP, 20]
